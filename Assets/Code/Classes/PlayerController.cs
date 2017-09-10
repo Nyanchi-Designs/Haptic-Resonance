@@ -5,7 +5,6 @@ using System.Collections;
 [RequireComponent (typeof (CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _Speed = 5f;
     [Tooltip ("The height of the player's jump. (Use negative values for underneath and postive for above.)")]
     [SerializeField] private float _JumpHeight = 0.5f;
     [Tooltip ("The gravity affecting the player's fall speed and force required to push off the ground. (Use postive values for underneath and negative for above.)")]
@@ -35,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update ()
     {
-        GetInput ();
         Move ();
     }
 
@@ -52,18 +50,7 @@ public class PlayerController : MonoBehaviour
             _YVelocity = 0.0f;
     }
 
-    private void ApplySpeed ()
-    {
-        _MovVelocity.x = _Speed * Time.deltaTime;
-    }
-
-    private void GetInput ()
-    {
-        if (Input.GetMouseButtonDown (0))
-            Jump ();
-    }
-
-    private void Jump ()
+    public void Jump ()
     {
         if (CanJump ())
             _YVelocity = _JumpHeight;

@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de873579b028c04db80d5f286c6ccc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Speed: 5
   _JumpHeight: -0.5
   _Gravity: 1
   _GroundLayers:
@@ -445,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de873579b028c04db80d5f286c6ccc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Speed: 5
   _JumpHeight: 0.5
   _Gravity: -1
   _GroundLayers:
