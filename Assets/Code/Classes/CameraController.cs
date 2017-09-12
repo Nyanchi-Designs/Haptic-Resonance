@@ -21,7 +21,10 @@ public class CameraController : MonoBehaviour
     {
         // If an obstacle was hit and the camera can move, start scrolling.
         if (_CanMove)
+        {
             _Transform.Translate (Vector2.right * _ScrollSpeed * Time.fixedDeltaTime);
+            StopAllCoroutines();
+        }
         // If no obstacle is hit, then start moving the camera back to the centre of the screen.
         else if (!_CanMove && _Transform.position.x >= 0.05 || _Transform.position.x < -0.05f)
             StartCoroutine (MoveTo (new Vector3 (0.0f, _Transform.position.y, _Transform.position.z)));
