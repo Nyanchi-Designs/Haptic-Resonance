@@ -1,18 +1,36 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
 public class WorldController : MonoBehaviour
 {
-    public bool CanMove = true;
-
-    [Tooltip("The speed of the world's scrolling movement.")]
-    [SerializeField] private float _ScrollSpeed = 0.0f;
-    [Tooltip("The gameobject to control as the world.")]
+    [Tooltip ("The speed at which the world scrolls across the screen toward the player.")]
+    [SerializeField] private float _ScrollSpeed = 5f;
+    [Tooltip ("The GameObject containing the world hierarchy to move.")]
     [SerializeField] private Transform _World = null;
 
-    public void MoveWorld ()
+    private bool _CanMove = true;
+
+    private void Awake()
     {
-        if(_World != null && CanMove)
-            _World.Translate (Vector3.left * _ScrollSpeed * Time.deltaTime);
+        EventManager.OnObstacleHit += ObstacleHit;
+    }
+
+    private void Update ()
+    {
+        // If there is no obstacle in the way then move the world.
+        if (_CanMove)
+            _World.Translate (Vector2.left * _ScrollSpeed * Time.deltaTime);
+    }
+
+    private void ObstacleHit (bool hit)
+    {
+        if (hit)
+            _CanMove = false;
+        else
+            _CanMove = true;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.OnObstacleHit -= ObstacleHit;
     }
 }
