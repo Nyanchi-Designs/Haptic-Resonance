@@ -8,8 +8,10 @@ public class CameraController : MonoBehaviour
 {
     [Tooltip ("The speed of the camera's movement.")]
     [SerializeField] private float _ScrollSpeed = 5f;
+    public int RoutinesRunning = 0;
 
     private bool _CanMove = false;
+    private bool _IsRunning = false;
     private Transform _Transform = null;
 
     private void Awake()
@@ -24,27 +26,30 @@ public class CameraController : MonoBehaviour
         if (_CanMove)
         {
             _Transform.Translate (_Transform.right * _ScrollSpeed * Time.fixedDeltaTime);
-            StopAllCoroutines();
+            StopAllCoroutines ();
+            _IsRunning = false; 
         }
         // If no obstacle is hit, then start moving the camera back to the centre of the screen.
-        else if (!_CanMove && _Transform.position.x >= 0.05f)
+        else if (!_CanMove && _Transform.position.x >= 0.05f && !_IsRunning)
             StartCoroutine (MoveTo (new Vector3 (0.0f, _Transform.position.y, _Transform.position.z)));
     }
 
     private IEnumerator MoveTo (Vector3 position)
     {
+        _IsRunning = true;
         var startPos = _Transform.position;
         var elapsedTime = 0.0f;
 
-        while (elapsedTime < _ScrollSpeed)
+        while (elapsedTime < 5f)
         {
-            _Transform.position = Vector3.Lerp (startPos, position, elapsedTime / _ScrollSpeed);
+            _Transform.position = Vector3.Lerp (startPos, position, elapsedTime / 5f);
             elapsedTime += Time.deltaTime;
 
             yield return new WaitForEndOfFrame ();
         }
 
         StopAllCoroutines ();
+        _IsRunning = false;
     }
 
     private void ObstacleHit (bool hit)
