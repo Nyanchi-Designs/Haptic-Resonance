@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 22949742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dc562ab8d6a3224a9a76f3aaf2c2571, type: 3}
+  m_Script: {fileID: 11500000, guid: e9e08e839a275384495d7823f1cc876b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _ScrollSpeed: 5
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1073902794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 743182f2d39b5ff4fb3496dee6411c3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 310929b3249837e479fc68186e591754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _ScrollSpeed: 3
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1296175049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604b54457374a9840837401918ac7de1, type: 3}
+  m_Script: {fileID: 11500000, guid: ea1f2b2716835f14184f097c92d16301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _JumpHeight: 25
