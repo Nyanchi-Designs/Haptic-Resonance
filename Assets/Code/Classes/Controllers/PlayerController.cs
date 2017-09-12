@@ -1,9 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-//TODO: Fix touch controls as they sometimes give insane boost to character.
-//TODO: Test if massive boost occurs with button controls.
-//TODO: Fix touch controls as they don't allow both touches to simulate both characters.
 //TODO: Consider making each character have it's own component for controlling behaviour.
 public class PlayerController : MonoBehaviour
 {
@@ -50,7 +47,7 @@ public class PlayerController : MonoBehaviour
         _Nyan.position = new Vector2 (0.0f, _Nyan.position.y);
         _Chi.position = new Vector2 (0.0f, _Chi.position.y);
 
-        if (IsObstacle (_Nyan) || IsObstacle (_Chi))
+        if (HitObstacle (_Nyan) || HitObstacle (_Chi))
             EventManager.ObstacleHit (true);
         else
             EventManager.ObstacleHit (false);
@@ -93,11 +90,14 @@ public class PlayerController : MonoBehaviour
         {
             var firstTouch = Input.GetTouch (0);
 
-            if (firstTouch.position.x < Screen.width / 2)
+            if(firstTouch.phase == TouchPhase.Began)
+            {
+                if (firstTouch.position.x < Screen.width / 2)
                 Jump (_Nyan);
 
-            if (firstTouch.position.x > Screen.width / 2)
-                Jump (_Chi);
+                if (firstTouch.position.x > Screen.width / 2)
+                    Jump (_Chi);
+            }
         }
 
         if(Input.touchCount > 1)
@@ -105,17 +105,20 @@ public class PlayerController : MonoBehaviour
             var firstTouch = Input.GetTouch (0);
             var secondTouch = Input.GetTouch (1);
 
-            if (firstTouch.position.x < Screen.width / 2)
-                Jump (_Nyan);
+            if(firstTouch.phase == TouchPhase.Began && secondTouch.phase == TouchPhase.Began)
+            {
+                if (firstTouch.position.x < Screen.width / 2)
+                    Jump (_Nyan);
 
-            if (firstTouch.position.x > Screen.width / 2)
-                Jump (_Chi);
+                if (firstTouch.position.x > Screen.width / 2)
+                    Jump (_Chi);
 
-            if (secondTouch.position.x < Screen.width / 2)
-                Jump (_Nyan);
-            
-            if (secondTouch.position.x > Screen.width / 2)
-                Jump (_Chi);
+                if (secondTouch.position.x < Screen.width / 2)
+                    Jump (_Nyan);
+                
+                if (secondTouch.position.x > Screen.width / 2)
+                    Jump (_Chi);
+            }
         }
     }
 
@@ -145,7 +148,7 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    private bool IsObstacle (Rigidbody2D character)
+    private bool HitObstacle (Rigidbody2D character)
     {
         if (character == _Nyan)
         {

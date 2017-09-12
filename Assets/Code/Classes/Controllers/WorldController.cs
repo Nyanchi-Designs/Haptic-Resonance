@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//TODO: Consider moving scrolling into a seperate coroutine.
 public class WorldController : MonoBehaviour
 {
     [Tooltip ("The speed at which the world scrolls across the screen toward the player.")]

@@ -5,7 +5,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
     [Tooltip ("The speed of the camera's movement.")]
-    [SerializeField] private float _ScrollSpeed = 5f;
+    [SerializeField] private float _ScrollSpeed = 3f;
 
     private Transform _Transform = null;
 

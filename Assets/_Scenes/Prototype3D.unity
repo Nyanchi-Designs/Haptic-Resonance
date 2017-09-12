@@ -218,7 +218,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 799237873}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 1.5, z: 0}
+  m_LocalPosition: {x: 12, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1933946799}
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 918478862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 743182f2d39b5ff4fb3496dee6411c3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 310929b3249837e479fc68186e591754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _ScrollSpeed: 3
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1124878998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604b54457374a9840837401918ac7de1, type: 3}
+  m_Script: {fileID: 11500000, guid: ea1f2b2716835f14184f097c92d16301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _JumpHeight: 25
@@ -373,8 +373,8 @@ MonoBehaviour:
   _ObstacleLayers:
     serializedVersion: 2
     m_Bits: 512
-  _Nyan: {fileID: 50825475401295830, guid: 473801af81dda9b42849d2e10225fede, type: 2}
-  _Chi: {fileID: 50051317342379234, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+  _Nyan: {fileID: 50051317342379234, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+  _Chi: {fileID: 50825475401295830, guid: 473801af81dda9b42849d2e10225fede, type: 2}
 --- !u!4 &1124879000
 Transform:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1169038088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9, y: -1.5, z: 0}
+  m_LocalPosition: {x: 14, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1933946799}
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369197548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dc562ab8d6a3224a9a76f3aaf2c2571, type: 3}
+  m_Script: {fileID: 11500000, guid: e9e08e839a275384495d7823f1cc876b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _ScrollSpeed: 5
