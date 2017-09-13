@@ -594,7 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: 0
   _PassiveAmount: 3
-  _PassiveAwardRate: 2
+  _PassiveAwardRate: 1.5
 --- !u!4 &2107150767
 Transform:
   m_ObjectHideFlags: 0
