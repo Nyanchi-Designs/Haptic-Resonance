@@ -8,6 +8,7 @@ public abstract class TimedCollectable : Collectable
 
     protected override void Collected ()
     {
+        base.Collected ();
         Invoke ("EndOfEffect", _Duration);
     }
 

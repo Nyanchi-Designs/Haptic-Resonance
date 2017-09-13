@@ -18,5 +18,9 @@ public abstract class Collectable : MonoBehaviour
             Collected ();
     }
 
-    protected abstract void Collected ();
+    protected virtual void Collected ()
+    {
+        EventManager.ScoreChanged (_Score, false);
+        Destroy (this.gameObject);
+    }
 }
