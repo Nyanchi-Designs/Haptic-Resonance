@@ -1,14 +1,19 @@
 using UnityEngine;
 
 [AddComponentMenu ("Extended/Collectables/Stunted Jump")]
-public class StuntedJumpPickup : Collectable
+public class StuntedJumpPickup : TimedCollectable
 {
-    [Tooltip ("How long will this pickup's effect last on the player?")]
-    [SerializeField] private float _Duration = 1f;
+    [Tooltip ("What is the player's jump height whilst stunted?")]
+    [SerializeField] private float _StuntedJumpHeight = .25f;
     [Tooltip ("How many bonus points are awarded to the player's collected score whilst this effect is active?")]
     [SerializeField] private int _Bonus = 1;
 
     protected override void Collected ()
+    {
+        base.Collected ();
+    }
+
+    protected override void EndOfEffect ()
     {
     }
 }
