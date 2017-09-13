@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 //TODO: Think of better name for scroll speed.
+[AddComponentMenu ("Extended/Controllers/Camera Controller")]
 public class CameraController : MonoBehaviour
 {
     [Tooltip ("The speed of the camera's movement.")]

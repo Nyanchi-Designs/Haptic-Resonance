@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 //TODO: Consider making each character have it's own component for controlling behaviour.
+[AddComponentMenu ("Extended/Controllers/Player Controller")]
 public class PlayerController : MonoBehaviour
 {
     [Tooltip ("How high is the character able to jump before falling again?")]
