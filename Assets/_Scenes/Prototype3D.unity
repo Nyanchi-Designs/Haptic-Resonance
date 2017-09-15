@@ -102,8 +102,8 @@ GameObject:
   - component: {fileID: 290830610}
   - component: {fileID: 290830609}
   m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
+  m_Name: Game Controller
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,8 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 0
+  Multiplier: 1
   _PassiveAmount: 3
-  _PassiveAwardRate: 1
+  _PassiveAwardTime: 1
 --- !u!4 &290830610
 Transform:
   m_ObjectHideFlags: 0
@@ -380,7 +381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310929b3249837e479fc68186e591754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ScrollSpeed: 3
 --- !u!1 &1124878998
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 1124878999}
   m_Layer: 0
   m_Name: Player Controller
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1f2b2716835f14184f097c92d16301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _JumpHeight: 25
+  JumpHeight: 25
   _Gravity: -7
   _GroundLayers:
     serializedVersion: 2
