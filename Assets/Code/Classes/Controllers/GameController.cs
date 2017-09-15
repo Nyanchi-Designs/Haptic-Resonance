@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
 
     private void Start ()
     {
+        EventManager.GameStateChanged (GameStates.GameLoop);
         StartCoroutine (IncreaseScore ());
     }
 
