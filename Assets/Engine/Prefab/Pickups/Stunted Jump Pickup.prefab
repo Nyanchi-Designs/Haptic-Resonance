@@ -106,6 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a7fa7c4704a174498522b5d04c0b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Score: 0
+  _Score: 10
   _Duration: 4
-  _PassiveBonus: 1
+  _PassiveBonus: 2

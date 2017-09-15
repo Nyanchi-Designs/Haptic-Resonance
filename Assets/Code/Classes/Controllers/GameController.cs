@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+//TODO: Consider making scoring system a seperate class
 public class GameController : MonoBehaviour
 {
     [Tooltip ("The players current score total.")]
@@ -14,6 +15,7 @@ public class GameController : MonoBehaviour
 
     private void Awake ()
     {
+        EventManager.OnPassiveAmountChanged += PassiveAmountChanged;
         EventManager.OnScoreChanged += ScoreChanged;
     }
 
@@ -31,6 +33,14 @@ public class GameController : MonoBehaviour
         StartCoroutine (IncreaseScore ());
     }
 
+    private void PassiveAmountChanged (int amount)
+    {
+        if (amount == 0)
+            _PassiveAmount = 3;
+        else
+            _PassiveAmount += amount;
+    }
+
     private void ScoreChanged (int score, bool isCaller)
     {
         if(!isCaller)
@@ -42,6 +52,7 @@ public class GameController : MonoBehaviour
 
     private void OnDestroy ()
     {
+        EventManager.OnPassiveAmountChanged -= PassiveAmountChanged;
         EventManager.OnScoreChanged -= ScoreChanged;
     }
 }

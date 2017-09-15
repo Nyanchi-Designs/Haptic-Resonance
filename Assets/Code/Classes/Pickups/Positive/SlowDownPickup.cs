@@ -12,11 +12,13 @@ public class SlowDownPickup : TimedCollectable
     {
         base.Collected ();
         EventManager.SpeedChanged (_SlowedSpeed);
+        EventManager.PassiveAmountChanged (-_PassivePenalty);
     }
 
     protected override void EndOfEffect ()
     {
         EventManager.SpeedChanged (5f);
+        EventManager.PassiveAmountChanged (0);
         Destroy (this.gameObject);
     }
 }

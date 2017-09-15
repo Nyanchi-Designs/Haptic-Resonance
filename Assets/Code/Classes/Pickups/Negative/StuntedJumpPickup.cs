@@ -14,11 +14,14 @@ public class StuntedJumpPickup : TimedCollectable
 
         _Player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
         _Player.JumpHeight = _Player.JumpHeight / 1.25f;
+        
+        EventManager.PassiveAmountChanged (_PassiveBonus);
     }
 
     protected override void EndOfEffect ()
     {
         _Player.JumpHeight = _Player.JumpHeight * 1.25f;
+        EventManager.PassiveAmountChanged (0);
         Destroy (this.gameObject);
     }
 }
