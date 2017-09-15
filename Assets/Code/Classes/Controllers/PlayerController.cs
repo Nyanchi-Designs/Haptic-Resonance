@@ -6,7 +6,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     [Tooltip ("How high is the character able to jump before falling again?")]
-    [SerializeField] private float _JumpHeight = 25f;
+    [SerializeField] public float JumpHeight = 25f;
     [Tooltip ("How heavy is the pull affecting the characters fall? (The higher the value, the faster the fall and the more force required to push.)")]
     [SerializeField] private float _Gravity = -7.0f;
     [Tooltip ("What layers does the character recognise as jumpable ground?")]
@@ -126,10 +126,10 @@ public class PlayerController : MonoBehaviour
     private void Jump (Rigidbody2D character)
     {
         if (character == _Nyan && IsGrounded (_Nyan))
-            _Nyan.AddForce (Vector2.up * _JumpHeight, ForceMode2D.Impulse);
+            _Nyan.AddForce (Vector2.up * JumpHeight, ForceMode2D.Impulse);
 
         if (character == _Chi && IsGrounded (_Chi))
-            _Chi.AddForce (Vector2.up * -_JumpHeight, ForceMode2D.Impulse);
+            _Chi.AddForce (Vector2.up * -JumpHeight, ForceMode2D.Impulse);
     }
     
     private bool IsGrounded(Rigidbody2D character)

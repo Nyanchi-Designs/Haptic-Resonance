@@ -13,7 +13,13 @@ public class WorldController : MonoBehaviour
 
     private void Awake()
     {
+        EventManager.OnSpeedChanged += SpeedChanged;
         EventManager.OnObstacleHit += ObstacleHit;
+    }
+
+    private void Start ()
+    {
+        EventManager.SpeedChanged (_ScrollSpeed);
     }
 
     private void Update ()
@@ -31,8 +37,14 @@ public class WorldController : MonoBehaviour
             _CanMove = true;
     }
 
+    private void SpeedChanged (float speed)
+    {
+        _ScrollSpeed = speed;
+    }
+
     private void OnDestroy()
     {
+        EventManager.OnSpeedChanged -= SpeedChanged;
         EventManager.OnObstacleHit -= ObstacleHit;
     }
 }

@@ -7,12 +7,12 @@ public abstract class Collectable : MonoBehaviour
     [Tooltip ("How much is the player awarded upon collecting this.")]
     [SerializeField] protected int _Score = 0;
 
-    private void Awake()
+    private void Awake ()
     {
         GetComponent<Collider2D> ().isTrigger = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D (Collider2D other)
     {
         if (other.CompareTag ("Player"))
             Collected ();
@@ -21,6 +21,6 @@ public abstract class Collectable : MonoBehaviour
     protected virtual void Collected ()
     {
         EventManager.ScoreChanged (_Score, false);
-        Destroy (this.gameObject);
+        this.gameObject.SetActive (false);
     }
 }

@@ -3,17 +3,22 @@ using UnityEngine;
 [AddComponentMenu ("Extended/Collectables/Stunted Jump")]
 public class StuntedJumpPickup : TimedCollectable
 {
-    [Tooltip ("What is the player's jump height whilst stunted?")]
-    [SerializeField] private float _StuntedJumpHeight = .25f;
     [Tooltip ("How many bonus points are awarded to the player's collected score whilst this effect is active?")]
-    [SerializeField] private int _Bonus = 1;
+    [SerializeField] private int _PassiveBonus = 1;
+
+    private PlayerController _Player = null;
 
     protected override void Collected ()
     {
         base.Collected ();
+
+        _Player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
+        _Player.JumpHeight = _Player.JumpHeight / 1.25f;
     }
 
     protected override void EndOfEffect ()
     {
+        _Player.JumpHeight = _Player.JumpHeight * 1.25f;
+        Destroy (this.gameObject);
     }
 }

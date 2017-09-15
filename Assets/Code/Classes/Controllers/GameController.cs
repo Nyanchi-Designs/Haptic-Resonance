@@ -5,10 +5,12 @@ public class GameController : MonoBehaviour
 {
     [Tooltip ("The players current score total.")]
     [ReadOnly] public int Score = 0;
+    [Tooltip ("The current multiplier added to the total score increase.")]
+    [ReadOnly] public int Multiplier = 1;
     [Tooltip ("How much is the player's score awarded passively?")]
     [SerializeField] private int _PassiveAmount = 3;
     [Tooltip ("How long is the wait between passive score awards.")]
-    [SerializeField] private float _PassiveAwardRate = 1f;
+    [SerializeField] private float _PassiveAwardTime = 1f;
 
     private void Awake ()
     {
@@ -22,7 +24,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator IncreaseScore ()
     {
-        yield return new WaitForSeconds (_PassiveAwardRate);
+        yield return new WaitForSeconds (_PassiveAwardTime);
         EventManager.ScoreChanged (_PassiveAmount, false);
 
         StopAllCoroutines ();
@@ -33,7 +35,7 @@ public class GameController : MonoBehaviour
     {
         if(!isCaller)
         {
-            Score += score;
+            Score += score * Multiplier;
             EventManager.ScoreChanged (Score, true);
         }
     }
