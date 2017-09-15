@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[AddComponentMenu ("Extended/UI/Menu/Level Select Screen")]
+[AddComponentMenu ("Extended/UI/Level Select Screen")]
 public class LevelSelectScreenController : MonoBehaviour
 {
-    public void OpenLevel (int level)
+    public void OpenLevel (string level)
     {
         SceneManager.LoadScene (level);
     }
