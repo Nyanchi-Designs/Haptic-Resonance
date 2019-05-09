@@ -16,31 +16,37 @@ public static class EventManager
 
     public static void MenuStateChanged (MenuStates state)
     {
-        OnMenuStateChanged (state);
+        if (OnMenuStateChanged != null)
+            OnMenuStateChanged (state);
     }
 
     public static void GameStateChanged (GameStates state)
     {
-        OnGameStateChanged (state);
+        if (OnGameStateChanged != null)
+            OnGameStateChanged (state);
     }
 
     public static void PassiveAmountChanged (int amount)
     {
-        OnPassiveAmountChanged (amount);
+        if (OnPassiveAmountChanged != null)
+            OnPassiveAmountChanged (amount);
     }
 
     public static void ScoreChanged (int score, bool isCaller)
     {
-        OnScoreChanged (score, isCaller);
+        if (OnScoreChanged != null)
+            OnScoreChanged (score, isCaller);
     }
 
     public static void SpeedChanged (float speed)
     {
-        OnSpeedChanged (speed);
+        if (OnSpeedChanged != null)
+            OnSpeedChanged (speed);
     }
 
     public static void ObstacleHit (bool hit)
     {
-        OnObstacleHit (hit);
+        if (OnObstacleHit != null)
+            OnObstacleHit (hit);
     }
 }
