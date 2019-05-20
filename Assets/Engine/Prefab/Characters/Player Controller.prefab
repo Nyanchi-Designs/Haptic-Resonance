@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpHeight: 25
   _Gravity: -7
+  _MovementSpeed: 10
+  _CatchupSpeed: 25
   _GroundLayers:
     serializedVersion: 2
     m_Bits: 768
