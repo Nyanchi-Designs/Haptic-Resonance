@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     {
         EventManager.OnPassiveAmountChanged += PassiveAmountChanged;
         EventManager.OnScoreChanged += ScoreChanged;
+        EventManager.OnGameStateChanged += OnGameStateChanged;
     }
 
     private void Start ()
@@ -51,9 +52,28 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void OnGameStateChanged (GameStates gameState)
+    {
+        switch (gameState)
+        {
+            case GameStates.GameLoop:
+                break;
+            case GameStates.LevelFailed:
+
+                break;
+            case GameStates.LevelComplete:
+                break;
+            case GameStates.LevelSelect:
+                break;
+            default:
+                break;
+        }
+    }
+
     private void OnDestroy ()
     {
         EventManager.OnPassiveAmountChanged -= PassiveAmountChanged;
         EventManager.OnScoreChanged -= ScoreChanged;
+        EventManager.OnGameStateChanged -= OnGameStateChanged;
     }
 }
