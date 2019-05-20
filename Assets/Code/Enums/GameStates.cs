@@ -3,5 +3,6 @@ public enum GameStates
     GameLoop,
     LevelFailed,
     LevelComplete,
-    LevelSelect
+    LevelSelect,
+    Paused
 }
