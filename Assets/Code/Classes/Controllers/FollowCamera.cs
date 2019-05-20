@@ -11,8 +11,9 @@ namespace Assets.Code.Classes.Controllers
         private Transform _Transform = null;
         private Rigidbody2D _Rigidbody2D = null;
 
-        private void Awake ()
+        protected override void Awake ()
         {
+            base.Awake ();
             _Rigidbody2D = GetComponent<Rigidbody2D> ();
         }
 
@@ -28,10 +29,23 @@ namespace Assets.Code.Classes.Controllers
             _Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
-        protected override void Update ()
+        protected override void Tick ()
         {
-            base.Update ();
             _Rigidbody2D.velocity = new Vector2 (_MovementSpeed * 10 * Time.fixedDeltaTime, _Rigidbody2D.velocity.y);
+        }
+
+        protected override void OnGameStateChanged (GameStates gameState)
+        {
+            switch (gameState)
+            {
+                case GameStates.GameLoop:
+                    this._ShouldUpdate = true;
+                    break;
+                default:
+                    this._ShouldUpdate = false;
+                    _Rigidbody2D.velocity = Vector2.zero;
+                    break;
+            }
         }
     }
 }

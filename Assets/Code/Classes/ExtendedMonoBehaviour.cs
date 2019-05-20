@@ -2,7 +2,7 @@
 
 namespace Assets.Code.Classes
 {
-    public class ExtendedMonoBehaviour : MonoBehaviour
+    public abstract class ExtendedMonoBehaviour : MonoBehaviour
     {
         public bool ShouldUpdate { get { return _ShouldUpdate; } set { _ShouldUpdate = value; } }
 
@@ -13,26 +13,15 @@ namespace Assets.Code.Classes
             EventManager.OnGameStateChanged += OnGameStateChanged;
         }
 
-        private void OnGameStateChanged (GameStates gameState)
+        protected virtual void OnGameStateChanged (GameStates gameState)
         {
             switch (gameState)
             {
                 case GameStates.GameLoop:
                     _ShouldUpdate = true;
                     break;
-                case GameStates.LevelFailed:
-                    _ShouldUpdate = false;
-                    break;
-                case GameStates.LevelComplete:
-                    _ShouldUpdate = false;
-                    break;
-                case GameStates.LevelSelect:
-                    _ShouldUpdate = false;
-                    break;
-                case GameStates.Paused:
-                    _ShouldUpdate = false;
-                    break;
                 default:
+                    _ShouldUpdate = false;
                     break;
             }
         }
@@ -44,14 +33,29 @@ namespace Assets.Code.Classes
 
         protected virtual void Update ()
         {
-            if (_ShouldUpdate == false)
+            if (_ShouldUpdate)
+            {
+                Tick ();
                 return;
+            }
+        }
+
+        protected virtual void Tick ()
+        {
+
         }
 
         protected virtual void FixedUpdate ()
         {
-            if (_ShouldUpdate == false)
+            if (_ShouldUpdate)
+                FixedTick ();
+            else
                 return;
+        }
+
+        protected virtual void FixedTick ()
+        {
+
         }
     }
 }

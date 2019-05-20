@@ -57,9 +57,8 @@ public class PlayerController : ExtendedMonoBehaviour
         _Chi.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
-    protected override void Update ()
+    protected override void Tick ()
     {
-        base.Update ();
         DebugLines ();
         GetInput ();
         Move ();
@@ -245,26 +244,17 @@ public class PlayerController : ExtendedMonoBehaviour
         return false;
     }
 
-    private void OnGameStateChanged (GameStates gameState)
+    protected override void OnGameStateChanged (GameStates gameState)
     {
         switch (gameState)
         {
             case GameStates.GameLoop:
                 this._ShouldUpdate = true;
                 break;
-            case GameStates.LevelFailed:
-                this._ShouldUpdate = false;
-                break;
-            case GameStates.LevelComplete:
-                this._ShouldUpdate = false;
-                break;
-            case GameStates.LevelSelect:
-                this._ShouldUpdate = false;
-                break;
-            case GameStates.Paused:
-                this._ShouldUpdate = false;
-                break;
             default:
+                this._ShouldUpdate = false;
+                _Nyan.velocity = Vector2.zero;
+                _Chi.velocity = Vector2.zero;
                 break;
         }
     }

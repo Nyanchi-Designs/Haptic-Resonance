@@ -16,6 +16,7 @@ namespace Assets.Code.Classes
             {
                 EventManager.GameStateChanged (GameStates.LevelFailed);
                 other.gameObject.SetActive (false);
+                this.gameObject.SetActive (false);
             }
         }
     }
