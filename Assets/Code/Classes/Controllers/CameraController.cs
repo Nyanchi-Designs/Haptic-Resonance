@@ -27,19 +27,19 @@ public class CameraController : MonoBehaviour
 
     private void ObstacleHit (bool hit)
     {
-        if (hit)
-        {
-            // Stop all previous scrolling.
-            StopAllCoroutines ();
-            // Scroll to the right of the screen.
-            StartCoroutine (Move (new Vector3 (50.0f, _Transform.position.y, _Transform.position.z), _ScrollSpeed));
-        }
-        else
-        {
+        //if (hit)
+        //{
+        //    // Stop all previous scrolling.
+        //    StopAllCoroutines ();
+        //    // Scroll to the right of the screen.
+        //    StartCoroutine (Move (new Vector3 (50.0f, _Transform.position.y, _Transform.position.z), _ScrollSpeed));
+        //}
+        //else
+        //{
             StopAllCoroutines ();
             // Scroll back to the center area of the screen.
             StartCoroutine (MoveTo (new Vector3 (0.0f, _Transform.position.y, _Transform.position.z), _CenteringSpeed));
-        }
+        //}
     }
 
     private IEnumerator Move (Vector3 position, float speed)

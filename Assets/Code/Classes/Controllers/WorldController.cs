@@ -31,10 +31,10 @@ public class WorldController : MonoBehaviour
 
     private void ObstacleHit (bool hit)
     {
-        if (hit)
-            _CanMove = false;
-        else
-            _CanMove = true;
+        //if (hit)
+        //    _CanMove = false;
+        //else
+        //    _CanMove = true;
     }
 
     private void SpeedChanged (float speed)
