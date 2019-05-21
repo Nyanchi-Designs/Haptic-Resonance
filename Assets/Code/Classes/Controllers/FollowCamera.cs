@@ -32,6 +32,8 @@ namespace Assets.Code.Classes.Controllers
         protected override void Tick ()
         {
             _Rigidbody2D.velocity = new Vector2 (_MovementSpeed * 10 * Time.fixedDeltaTime, _Rigidbody2D.velocity.y);
+            //_Rigidbody2D.MovePosition (_Rigidbody2D.position + new Vector2 (_MovementSpeed * Time.fixedDeltaTime, 0.0f));
+            //_Rigidbody2D.AddRelativeForce (Vector2.right * _MovementSpeed - _Rigidbody2D.velocity);
         }
 
         protected override void OnGameStateChanged (GameStates gameState)
