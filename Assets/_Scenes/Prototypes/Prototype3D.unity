@@ -134,7 +134,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 349240810}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -323,6 +323,76 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 495040994d3a0a64da3a96f1e86710a3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &812029411
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4279298572758184, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279298572758184, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279298572758184, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279298572758184, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279298572758184, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279298572758184, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279298572758184, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279298572758184, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ce40d1ef7795b9746b8aac65d0d5f403, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &812029412 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1482394670326184, guid: ce40d1ef7795b9746b8aac65d0d5f403,
+    type: 2}
+  m_PrefabInternal: {fileID: 812029411}
+--- !u!114 &812029413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 812029412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e391a0f8cc9add2408316594ea7e94a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _IsUpsideDown: 0
+  JumpHeight: 25
+  _Gravity: -7
+  _MovementSpeed: 20
+  _CatchupSpeed: 25
+  _GroundLayers:
+    serializedVersion: 2
+    m_Bits: 768
+  _ObstacleLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _JumpKey: 97
 --- !u!1001 &1204079235
 Prefab:
   m_ObjectHideFlags: 0
@@ -425,6 +495,11 @@ Prefab:
       propertyPath: _CatchupSpeed
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 114860129587783188, guid: 7b6f3fd60877ed04f85e16c578900e70,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b6f3fd60877ed04f85e16c578900e70, type: 2}
   m_IsPrefabParent: 0
@@ -476,9 +551,83 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 4.67
       objectReference: {fileID: 0}
+    - target: {fileID: 1967234913982270, guid: 2f89e2d6bfcebd44791c831d360ecfb9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f89e2d6bfcebd44791c831d360ecfb9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1367060350
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4867807852676860, guid: 473801af81dda9b42849d2e10225fede, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867807852676860, guid: 473801af81dda9b42849d2e10225fede, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867807852676860, guid: 473801af81dda9b42849d2e10225fede, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867807852676860, guid: 473801af81dda9b42849d2e10225fede, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867807852676860, guid: 473801af81dda9b42849d2e10225fede, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867807852676860, guid: 473801af81dda9b42849d2e10225fede, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867807852676860, guid: 473801af81dda9b42849d2e10225fede, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867807852676860, guid: 473801af81dda9b42849d2e10225fede, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 473801af81dda9b42849d2e10225fede, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1367060351 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1601747198844794, guid: 473801af81dda9b42849d2e10225fede,
+    type: 2}
+  m_PrefabInternal: {fileID: 1367060350}
+--- !u!114 &1367060352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1367060351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e391a0f8cc9add2408316594ea7e94a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _IsUpsideDown: 1
+  JumpHeight: 25
+  _Gravity: -7
+  _MovementSpeed: 20
+  _CatchupSpeed: 25
+  _GroundLayers:
+    serializedVersion: 2
+    m_Bits: 768
+  _ObstacleLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  _JumpKey: 100
 --- !u!1 &1806736695 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1883993092109526, guid: 74e6627586d66b24994fd54ebb168718,

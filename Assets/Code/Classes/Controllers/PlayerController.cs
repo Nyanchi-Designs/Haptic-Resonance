@@ -25,22 +25,15 @@ public class PlayerController : ExtendedMonoBehaviour
 
     [SerializeField] private Vector3 _StartPosition = Vector3.zero;
 
-    protected override void Awake()
-    {
-        _Nyan = Instantiate (_Nyan.gameObject, new Vector3 (0.0f, 3f, 0.0f), Quaternion.identity).GetComponent<Rigidbody2D> ();
-        _Chi = Instantiate (_Chi.gameObject, new Vector3 (0.0f, -3f, 0.0f), Quaternion.identity).GetComponent<Rigidbody2D> ();
-        _Nyan.tag = "Player";
-        _Chi.tag = "Player";
+    //protected override void Awake()
+    //{
+    //    _Nyan = Instantiate (_Nyan.gameObject, new Vector3 (0.0f, 3f, 0.0f), Quaternion.identity).GetComponent<Rigidbody2D> ();
+    //    _Chi = Instantiate (_Chi.gameObject, new Vector3 (0.0f, -3f, 0.0f), Quaternion.identity).GetComponent<Rigidbody2D> ();
+    //    _Nyan.tag = "Player";
+    //    _Chi.tag = "Player";
 
-        _StartPosition = _Nyan.transform.position;
-
-        EventManager.OnGameStateChanged += OnGameStateChanged;
-    }
-
-    protected override void OnDestroy ()
-    {
-        EventManager.OnGameStateChanged -= OnGameStateChanged;
-    }
+    //    _StartPosition = _Nyan.transform.position;
+    //}
 
     private void Start ()
     {
