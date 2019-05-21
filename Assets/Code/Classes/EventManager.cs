@@ -5,6 +5,7 @@ public delegate void ChangeGameState (GameStates state);
 public delegate void ChangePassiveAmount (int amount);
 public delegate void ChangeScore (int score, bool isCaller);
 public delegate void ChangeSpeed (bool reset, float speed, GameObject character);
+public delegate void ChangeJumpHeight (bool reset, float jumpHeight, GameObject character);
 public delegate void HitObstacle (bool hit);
 
 public static class EventManager
@@ -14,6 +15,7 @@ public static class EventManager
     public static event ChangePassiveAmount OnPassiveAmountChanged;
     public static event ChangeScore OnScoreChanged;
     public static event ChangeSpeed OnSpeedChanged;
+    public static event ChangeJumpHeight OnJumpHeightChanged;
     public static event HitObstacle OnObstacleHit;
 
     public static void MenuStateChanged (MenuStates state)
@@ -44,6 +46,12 @@ public static class EventManager
     {
         if (OnSpeedChanged != null)
             OnSpeedChanged (reset, speed, character);
+    }
+
+    public static void ChangeJumpHeight (bool reset, float jumpHeight, GameObject character)
+    {
+        if (OnJumpHeightChanged != null)
+            OnJumpHeightChanged (reset, jumpHeight, character);
     }
 
     public static void ObstacleHit (bool hit)

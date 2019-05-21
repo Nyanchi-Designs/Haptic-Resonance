@@ -8,7 +8,7 @@ namespace Assets.Code.Classes.Controllers
         [Tooltip ("Is this character meant to be upside down.")]
         [SerializeField] private bool _IsUpsideDown = false;
         [Tooltip ("How high is the character able to jump before falling again?")]
-        [SerializeField] public float JumpHeight = 25f; 
+        [SerializeField] public float _JumpHeight = 25f; 
         [Tooltip ("How heavy is the pull affecting the characters fall? (The higher the value, the faster the fall and the more force required to push.)")]
         [SerializeField] private float _Gravity = -7.0f;
         [Tooltip ("The speed at which the characters move across the world.")]
@@ -25,6 +25,7 @@ namespace Assets.Code.Classes.Controllers
         private Rigidbody2D _Rigidybody2D = null;
         private float _CachedMovementSpeed = 0.0f;
         private float _CachedCatchupSpeed = 0.0f;
+        private float _CachedJumpHeight = 0.0f;
         private Transform _Camera = null;
 
         protected override void Awake ()
@@ -33,8 +34,10 @@ namespace Assets.Code.Classes.Controllers
             _Rigidybody2D = GetComponent<Rigidbody2D> ();
             _CachedMovementSpeed = _MovementSpeed;
             _CachedCatchupSpeed = _CatchupSpeed;
+            _CachedJumpHeight = _JumpHeight;
 
             EventManager.OnSpeedChanged += OnSpeedChanged;
+            EventManager.OnJumpHeightChanged += OnJumpHeightChanged;
         }
 
         private void OnSpeedChanged (bool reset, float speed, GameObject character)
@@ -53,10 +56,25 @@ namespace Assets.Code.Classes.Controllers
             }
         }
 
+        private void OnJumpHeightChanged (bool reset, float jumpHeight, GameObject character)
+        {
+            if (character == this.gameObject)
+            {
+                if (reset)
+                {
+                    _JumpHeight = _CachedJumpHeight;
+                    return;
+                }
+
+                _JumpHeight /= jumpHeight;
+            }
+        }
+
         protected override void OnDestroy ()
         {
             base.OnDestroy ();
             EventManager.OnSpeedChanged -= OnSpeedChanged;
+            EventManager.OnJumpHeightChanged -= OnJumpHeightChanged;
         }
 
         private void Start ()
@@ -102,10 +120,10 @@ namespace Assets.Code.Classes.Controllers
         private void Jump ()
         {
             if (IsGrounded () && _IsUpsideDown == false)
-                _Rigidybody2D.AddForce (Vector2.up * JumpHeight, ForceMode2D.Impulse);
+                _Rigidybody2D.AddForce (Vector2.up * _JumpHeight, ForceMode2D.Impulse);
 
             if (IsGrounded () && _IsUpsideDown)
-                _Rigidybody2D.AddForce (Vector2.up * -JumpHeight, ForceMode2D.Impulse);
+                _Rigidybody2D.AddForce (Vector2.up * -_JumpHeight, ForceMode2D.Impulse);
         }
 
         private bool IsGrounded ()

@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _IsUpsideDown: 0
-  JumpHeight: 25
+  _JumpHeight: 25
   _Gravity: -7
   _MovementSpeed: 20
   _CatchupSpeed: 25
@@ -725,7 +725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _IsUpsideDown: 1
-  JumpHeight: 25
+  _JumpHeight: 25
   _Gravity: -7
   _MovementSpeed: 20
   _CatchupSpeed: 25
@@ -904,3 +904,50 @@ Transform:
   m_PrefabParentObject: {fileID: 4855008626428324, guid: 2f89e2d6bfcebd44791c831d360ecfb9,
     type: 2}
   m_PrefabInternal: {fileID: 1333402385}
+--- !u!1001 &2069904340
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4928945215237928, guid: 060195bbb2191534fb10ae7af11460f2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 12.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928945215237928, guid: 060195bbb2191534fb10ae7af11460f2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928945215237928, guid: 060195bbb2191534fb10ae7af11460f2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928945215237928, guid: 060195bbb2191534fb10ae7af11460f2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928945215237928, guid: 060195bbb2191534fb10ae7af11460f2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928945215237928, guid: 060195bbb2191534fb10ae7af11460f2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928945215237928, guid: 060195bbb2191534fb10ae7af11460f2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928945215237928, guid: 060195bbb2191534fb10ae7af11460f2, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114473889499367776, guid: 060195bbb2191534fb10ae7af11460f2,
+        type: 2}
+      propertyPath: _JumpHeight
+      value: 1.25
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 060195bbb2191534fb10ae7af11460f2, type: 2}
+  m_IsPrefabParent: 0
