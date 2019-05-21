@@ -7,6 +7,7 @@ public delegate void ChangeScore (int score, bool isCaller);
 public delegate void ChangeSpeed (bool reset, float speed, GameObject character);
 public delegate void ChangeJumpHeight (bool reset, float jumpHeight, GameObject character);
 public delegate void Push (Vector2 direction, float pushAmount, GameObject character);
+public delegate void InversePolarity ();
 public delegate void HitObstacle (bool hit);
 
 public static class EventManager
@@ -18,6 +19,7 @@ public static class EventManager
     public static event ChangeSpeed OnSpeedChanged;
     public static event ChangeJumpHeight OnJumpHeightChanged;
     public static event Push OnPushed;
+    public static event InversePolarity OnPolarityInversed;
     public static event HitObstacle OnObstacleHit;
 
     public static void MenuStateChanged (MenuStates state)
@@ -60,6 +62,12 @@ public static class EventManager
     {
         if (OnPushed != null)
             OnPushed (direction, pushAmount, character);
+    }
+
+    public static void InversePolarity ()
+    {
+        if (OnPolarityInversed != null)
+            OnPolarityInversed ();
     }
 
     public static void ObstacleHit (bool hit)

@@ -38,6 +38,7 @@ namespace Assets.Code.Classes.Controllers
 
             EventManager.OnPushed += OnPushed;
             EventManager.OnSpeedChanged += OnSpeedChanged;
+            EventManager.OnPolarityInversed += OnPolarityInversed;
             EventManager.OnJumpHeightChanged += OnJumpHeightChanged;
         }
 
@@ -63,6 +64,13 @@ namespace Assets.Code.Classes.Controllers
             }
         }
 
+        private void OnPolarityInversed ()
+        {
+            print ("Inversing");
+            _IsUpsideDown = !_IsUpsideDown;
+            SetGravityScale ();
+        }
+
         private void OnJumpHeightChanged (bool reset, float jumpHeight, GameObject character)
         {
             if (character == this.gameObject)
@@ -82,6 +90,7 @@ namespace Assets.Code.Classes.Controllers
             base.OnDestroy ();
             EventManager.OnPushed += OnPushed;
             EventManager.OnSpeedChanged -= OnSpeedChanged;
+            EventManager.OnPolarityInversed -= OnPolarityInversed;
             EventManager.OnJumpHeightChanged -= OnJumpHeightChanged;
         }
 
@@ -93,13 +102,17 @@ namespace Assets.Code.Classes.Controllers
 
         private void SetDefaults ()
         {
+            SetGravityScale ();
+            _Rigidbody2D.isKinematic = false;
+            _Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
+        private void SetGravityScale ()
+        {
             if (_IsUpsideDown)
                 _Rigidbody2D.gravityScale = _Gravity;
             else
                 _Rigidbody2D.gravityScale = -_Gravity;
-
-            _Rigidbody2D.isKinematic = false;
-            _Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
         protected override void Tick ()
