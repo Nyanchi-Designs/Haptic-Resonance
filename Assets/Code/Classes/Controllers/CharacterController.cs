@@ -8,7 +8,7 @@ namespace Assets.Code.Classes.Controllers
         [Tooltip ("Is this character meant to be upside down.")]
         [SerializeField] private bool _IsUpsideDown = false;
         [Tooltip ("How high is the character able to jump before falling again?")]
-        [SerializeField] public float JumpHeight = 25f;
+        [SerializeField] public float JumpHeight = 25f; 
         [Tooltip ("How heavy is the pull affecting the characters fall? (The higher the value, the faster the fall and the more force required to push.)")]
         [SerializeField] private float _Gravity = -7.0f;
         [Tooltip ("The speed at which the characters move across the world.")]
@@ -23,6 +23,7 @@ namespace Assets.Code.Classes.Controllers
         [SerializeField] private KeyCode _JumpKey = KeyCode.A;
 
         private Rigidbody2D _Rigidybody2D = null;
+        private Transform _Camera = null;
 
         protected override void Awake ()
         {
@@ -33,6 +34,7 @@ namespace Assets.Code.Classes.Controllers
         private void Start ()
         {
             SetDefaults ();
+            _Camera = Camera.main.transform;
         }
 
         private void SetDefaults ()
@@ -80,14 +82,15 @@ namespace Assets.Code.Classes.Controllers
 
         private bool IsGrounded ()
         {
+            float groundedOffset = 1.1f;
             if (_IsUpsideDown)
             {
-                if (Physics2D.Linecast (_Rigidybody2D.transform.position, new Vector3 (_Rigidybody2D.transform.position.x, _Rigidybody2D.transform.position.y + 1.1f, 0.0f), _GroundLayers))
+                if (Physics2D.Linecast (_Rigidybody2D.transform.position, new Vector3 (_Rigidybody2D.transform.position.x, _Rigidybody2D.transform.position.y + groundedOffset, 0.0f), _GroundLayers))
                     return true;
             }
             else
             {
-                if (Physics2D.Linecast (_Rigidybody2D.transform.position, new Vector3 (_Rigidybody2D.transform.position.x, _Rigidybody2D.transform.position.y - 1.1f, 0.0f), _GroundLayers))
+                if (Physics2D.Linecast (_Rigidybody2D.transform.position, new Vector3 (_Rigidybody2D.transform.position.x, _Rigidybody2D.transform.position.y - groundedOffset, 0.0f), _GroundLayers))
                     return true;
             }
 
@@ -96,24 +99,27 @@ namespace Assets.Code.Classes.Controllers
 
         private void Move ()
         {
-            if (Approximately (_Rigidybody2D.position.x, Camera.main.transform.position.x - 5.0f, 0.075f) == true)
-            {
-                _Rigidybody2D.velocity = new Vector2 (_MovementSpeed * 10 * Time.fixedDeltaTime, _Rigidybody2D.velocity.y);
-            }
-            else if (_Rigidybody2D.position.x < Camera.main.transform.position.x - 5.0f && Approximately (_Rigidybody2D.position.x, Camera.main.transform.position.x - 5.0f, 0.075f) == false)
+            float tolerance = 0.075f;
+            float cameraPositionOffset = 5.0f;
+
+            if (_Rigidybody2D.position.x < _Camera.position.x - cameraPositionOffset && Approximately (_Rigidybody2D.position.x, _Camera.position.x - cameraPositionOffset, tolerance) == false)
             {
                 _Rigidybody2D.velocity = new Vector2 (_CatchupSpeed * 10 * Time.fixedDeltaTime, _Rigidybody2D.velocity.y);
             }
+            else
+            {
+                _Rigidybody2D.velocity = new Vector2 (_MovementSpeed * 10 * Time.fixedDeltaTime, _Rigidybody2D.velocity.y);
+            }
         }
 
+        /// <summary> Determines if two floats are approximately equal to each other within a set tolerance amount. </summary>
+        /// <param name="a">The first float to compare</param>
+        /// <param name="b">The second float to compare</param>
+        /// <param name="tolerance">The amount of tolerance in the comparison</param>
+        /// <returns>Whether they are equal to each other or not.</returns>
         private bool Approximately (float a, float b, float tolerance)
         {
             return (Mathf.Abs (a - b) < tolerance);
         }
-
-        //private bool HitObstacle ()
-        //{
-        //    if ()
-        //}
     }
 }
