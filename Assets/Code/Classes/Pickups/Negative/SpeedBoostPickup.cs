@@ -11,13 +11,13 @@ public class SpeedBoostPickup : TimedCollectable
     protected override void Collected ()
     {
         base.Collected ();
-        EventManager.SpeedChanged (_BoostedSpeed);
+        EventManager.SpeedChanged (false, _BoostedSpeed, _Other.gameObject);
         EventManager.PassiveAmountChanged (_PassiveBonus);
     }
 
     protected override void EndOfEffect ()
     {
-        EventManager.SpeedChanged (5f);
+        EventManager.SpeedChanged (true, 0.0f, _Other.gameObject);
         EventManager.PassiveAmountChanged (0);
         Destroy (this.gameObject);
     }

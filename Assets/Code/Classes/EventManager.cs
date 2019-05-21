@@ -1,8 +1,10 @@
+using UnityEngine;
+
 public delegate void ChangeMenuState (MenuStates state);
 public delegate void ChangeGameState (GameStates state);
 public delegate void ChangePassiveAmount (int amount);
 public delegate void ChangeScore (int score, bool isCaller);
-public delegate void ChangeSpeed (float speed);
+public delegate void ChangeSpeed (bool reset, float speed, GameObject character);
 public delegate void HitObstacle (bool hit);
 
 public static class EventManager
@@ -38,10 +40,10 @@ public static class EventManager
             OnScoreChanged (score, isCaller);
     }
 
-    public static void SpeedChanged (float speed)
+    public static void SpeedChanged (bool reset, float speed, GameObject character)
     {
         if (OnSpeedChanged != null)
-            OnSpeedChanged (speed);
+            OnSpeedChanged (reset, speed, character);
     }
 
     public static void ObstacleHit (bool hit)

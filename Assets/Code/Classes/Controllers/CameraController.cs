@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
     {
         _Transform = GetComponent<Transform> ();
 
-        EventManager.OnSpeedChanged += SpeedChanged;
+        //EventManager.OnSpeedChanged += SpeedChanged;
         EventManager.OnObstacleHit += ObstacleHit;
     }
 
@@ -76,7 +76,7 @@ public class CameraController : MonoBehaviour
 
     private void OnDestroy ()
     {
-        EventManager.OnSpeedChanged -= SpeedChanged;
+        //EventManager.OnSpeedChanged -= SpeedChanged;
         EventManager.OnObstacleHit -= ObstacleHit;
     }
 }

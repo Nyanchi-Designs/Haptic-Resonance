@@ -3,7 +3,7 @@
 namespace Assets.Code.Classes.Controllers
 {
     [RequireComponent (typeof (Collider2D), typeof (Rigidbody2D))]
-    class CharacterController : ExtendedMonoBehaviour
+    class CharController : ExtendedMonoBehaviour
     {
         [Tooltip ("Is this character meant to be upside down.")]
         [SerializeField] private bool _IsUpsideDown = false;
@@ -23,12 +23,40 @@ namespace Assets.Code.Classes.Controllers
         [SerializeField] private KeyCode _JumpKey = KeyCode.A;
 
         private Rigidbody2D _Rigidybody2D = null;
+        private float _CachedMovementSpeed = 0.0f;
+        private float _CachedCatchupSpeed = 0.0f;
         private Transform _Camera = null;
 
         protected override void Awake ()
         {
             base.Awake ();
             _Rigidybody2D = GetComponent<Rigidbody2D> ();
+            _CachedMovementSpeed = _MovementSpeed;
+            _CachedCatchupSpeed = _CatchupSpeed;
+
+            EventManager.OnSpeedChanged += OnSpeedChanged;
+        }
+
+        private void OnSpeedChanged (bool reset, float speed, GameObject character)
+        {
+            if (character == this.gameObject)
+            {
+                if (reset)
+                {
+                    _MovementSpeed = _CachedMovementSpeed;
+                    _CatchupSpeed = _CachedCatchupSpeed;
+                    return;
+                }
+
+                _MovementSpeed -= speed;
+                _CatchupSpeed -= speed;
+            }
+        }
+
+        protected override void OnDestroy ()
+        {
+            base.OnDestroy ();
+            EventManager.OnSpeedChanged -= OnSpeedChanged;
         }
 
         private void Start ()
