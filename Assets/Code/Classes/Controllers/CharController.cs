@@ -15,12 +15,18 @@ namespace Assets.Code.Classes.Controllers
         [SerializeField] private float _MovementSpeed = 20.0f;
         [Tooltip ("The speed at which the character will move to attempt to catch up.")]
         [SerializeField] private float _CatchupSpeed = 25.0f;
+        [Tooltip ("The size of the character when shrunk in size.")]
+        [SerializeField] private float _SmallScaleSize = 0.4f;
+        [Tooltip ("The amount of time the character will stay shrunken for.")]
+        [SerializeField] private float _ShrinkLength = 1.0f;
         [Tooltip ("What layers does the character recognise as jumpable ground?")]
         [SerializeField] private LayerMask _GroundLayers;
         [Tooltip ("What layers does the character recognise as stoppable obstacles?")]
         [SerializeField] private LayerMask _ObstacleLayers;
         [Tooltip ("The key the player will press to make the character jump.")]
         [SerializeField] private KeyCode _JumpKey = KeyCode.A;
+        [Tooltip ("The mouse button to press when using an ability.")]
+        [SerializeField] private int _MouseButton = 0;
 
         private Rigidbody2D _Rigidbody2D = null;
         private float _CachedMovementSpeed = 0.0f;
@@ -136,6 +142,9 @@ namespace Assets.Code.Classes.Controllers
         {
             if (Input.GetKeyDown (_JumpKey))
                 Jump ();
+
+            if (Input.GetMouseButtonDown (_MouseButton))
+                Shrink ();
         }
 
         private void Jump ()
@@ -165,6 +174,21 @@ namespace Assets.Code.Classes.Controllers
             }
 
             return false;
+        }
+
+        private void Shrink ()
+        {
+            if (transform.localScale == new Vector3 (_SmallScaleSize, _SmallScaleSize, _SmallScaleSize))
+                return;
+
+            transform.localScale = new Vector3 (_SmallScaleSize, _SmallScaleSize, _SmallScaleSize);
+
+            Invoke ("Unshrink", _ShrinkLength);
+        }
+
+        private void Unshrink ()
+        {
+            transform.localScale = new Vector3 (1f, 1f, 1f);
         }
 
         private void Move ()
